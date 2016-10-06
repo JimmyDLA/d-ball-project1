@@ -1,0 +1,29 @@
+.container{
+  background-color: lightblue;
+  height: 700px;
+  width: 800px;
+  border: black 5px solid;
+  display: flex;
+  justify-content: center;
+
+}
+.ball{
+  background-color: blue;
+  height: 15px;
+  width: 15px;
+  border: 2px black solid;
+  border-radius: 50%;
+  position: absolute;
+  left: 500px;
+  top: 100px;
+}
+.plate{
+  background-color: gray;
+  height: 20px;
+  width: 126px;
+  position: absolute;
+  align-items: center;
+  align-self: flex-end;
+  border-radius: 20px
+
+}

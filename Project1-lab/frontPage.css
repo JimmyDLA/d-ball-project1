@@ -5,3 +5,65 @@ html {
   -o-background-size: cover;
   background-size: cover;
   background-color: black;
+}
+body{
+  display: block;
+  height: 600px;
+  width: 98%;
+
+}
+header{
+  position: absolute;
+  display: inline-block;
+  height: 100px;
+  width: 98%;
+}
+.title{
+  padding-top: 50px;
+  color: white;
+text-align: center;
+}
+h2{
+  color: white;
+text-align: center;}
+.ballimg{
+  height: 40px;
+  width: 40px;
+}
+
+.logo{
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  color:white;
+}
+ul{
+  display: inline-block;
+  height: 30px;
+  width: 500px;
+}
+li{
+  display: inline-block;
+  color: white;
+}
+.center{
+  margin: auto;
+  align-self: center;
+  height: 250px;
+  width: 250px;
+}
+.centerball{
+  border: dotted white 5px;
+  height: 290px;
+  width: 250px;
+  border-radius: 100%;
+}
+.start{
+  height: 50px;
+  width: 300px;
+  opacity: .5;
+  background-color: black;
+  text-align: center;
+  margin: auto;
+  border-radius: 50px;
+}

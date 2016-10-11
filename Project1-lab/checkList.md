@@ -2,19 +2,19 @@ Requirements
 Check List!!!!
 Your app must:
 
-[ ] Your game should have two pages: a landing page and a game page
-[ ] Use only jQuery for DOM manipulation
+[x] Your game should have two pages: a landing page and a game page
+[x] Use only jQuery for DOM manipulation
 [ ] Deploy your game online to GitHub pages
-[ ] Include at least one CSS transition fired by a DOM event
-[ ] Choose an existing landing page on the web that includes a form; screen shot the landing page, and replicate its markup to create a separate game landing page that links to your game
+[x] Include at least one CSS transition fired by a DOM event
+[x] Choose an existing landing page on the web that includes a form; screen shot the landing page, and replicate its markup to create a separate game landing page that links to your game
 [ ] Use your form to collect information about the user and display that information on the game page; be sure to add things to your form, if needed, like buttons, sliders, checkboxes, radio buttons, etc.
-[ ] Style your form, landing page, and game page with class-based CSS
+[x] Style your form, landing page, and game page with class-based CSS
 [ ] Include a media query for a tablet to make your pages responsive
 Use skeleton.css for your grid system
-[ ] Create and get approval for a wireframe for your game page
-[ ] Comment your code appropriately
-[ ] Adhere to the AirBnB style guide for writing your JavaScript
-[ ] Adhere to the Google style guide for writing your HTML/CSS
+[x] Create and get approval for a wireframe for your game page
+[x] Comment your code appropriately
+[x] Adhere to the AirBnB style guide for writing your JavaScript
+[x] Adhere to the Google style guide for writing your HTML/CSS
 
 Bonus
 

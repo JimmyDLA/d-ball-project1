@@ -9,6 +9,14 @@ var bHeight= parseInt($(".bricks").css("height"))
 var bWidth = parseInt($(".bricks").css("width"));
 var xDif = 110;
 var yDif = 277;
+var dx = 2;
+var dy = -2;
+function flipY(){
+  dy= -dy;
+};
+function flipX(){
+  dx= -dx;
+};
 var brickArr=[
   ["b1",bX2 = (bWidth * 1) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 1) + yDif, bY1 = (bY2 - bHeight)],
   ["b2",bX2 = (bWidth * 2) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 2) + yDif, bY1 = (bY2 - bHeight)],
@@ -26,64 +34,7 @@ var brickArr=[
   ["b14",bX2 = (bWidth * 4) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 4) + yDif, bY1 = (bY2 - bHeight)],
   ["b15",bX2 = (bWidth * 5) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 5) + yDif, bY1 = (bY2 - bHeight)],
 ];
-// coordinates that will be adding or subtraction
-var dx = 2;
-var dy = -2;
-function flipY(){
-  dy= -dy;
-};
-function flipX(){
-  dx= -dx;
-};
-
-function helperX(){
-  for (var i = 0; i < brickArr.length; i++) {
-    // console.log(brickArr[i]);
-    for (var n = 0; n < 5; n++) {
-      // console.log(brickArr[i][n]);
-      if (ballX = brickArr[i][n] || brickArr[i][n] && brickArr[i][n] < ballY < brickArr[i][n]){
-        // flipX();
-        flipY();
-      }
-    }
-  }
-}
-
-function helperY(){
-  for (var i = 0; i < brickArr.length; i++) {
-    // console.log(brickArr[i]);
-    for (var n = 0; n < 5; n++) {
-      // console.log(brickArr[i][n]);
-      if(ballY = brickArr[i][n] || brickArr[i][n] && brickArr[i][n] < ballX < brickArr[i][n]){
-        // flipY();
-        flipX();
-      }
-    }
-  }
-}
-
-// my for loop to make the bricks w/ jQuery
-// for (var i = 1; i <= 15; i++) {
-//  var $newDiv = $("<div class = bricks id =" +i+ ">" +i+ "</div>");
-//  $(".boxes").append($newDiv);
-//  }
- // for (var n = 0; n < 15; n ++){
- //   brickArr[n]= {
- //     bNum: parseInt($("#"+(1+n)).text()),
- //     bX2: bWidth * bNum,
- //     bX1: bX2 - bWidth,
- //     bY2: bHeight * bNum,
- //     bY1: bY2 - bHeight,
- //
- //   }
- // }
- // brickArr.push($("#"+i))
- // console.log($("#"+ i));
- // console.log(brickArr[3][3])
- // console.log("bx2 is "+bX2)
- // console.log("bX1 is "+ bX1)
- // console.log("bY2 is "+bY2)
- // console.log("bY1 is "+bY1)
+// // coordinates that will be adding or subtraction
 
 
 //event listeners for left and right keys
@@ -115,6 +66,34 @@ function moveBall(){
   var ballX = parseInt($ball.css("left"));
   var plateX = parseInt($plate.css("left"));
 
+  function helperX(){
+    for (var i = 0; i < brickArr.length; i++) {
+      // console.log(brickArr[i]);
+      for (var n = 1; n < 5; n++) {
+        // console.log("helperX ==> "+ brickArr[i][n]);
+        if (ballX > brickArr[i][n] && ballX < brickArr[i][n]){
+          if(brickArr[i][n] < ballY && ballY < brickArr[i][n]){
+            flipX();
+          }
+        }
+      }
+    }
+  };
+
+  function helperY(){
+    for (var i = 0; i < brickArr.length; i++) {
+      // console.log(brickArr[i]);
+      for (var n = 1; n < 5; n++) {
+        // console.log("helperY => " + brickArr[i][n]);
+        if (ballY > brickArr[i][n] && ballY < brickArr[i][n]){
+          if(brickArr[i][n] < ballX && ballX < brickArr[i][n]){
+          flipY();
+          }
+        }
+      }
+    }
+  };
+
   //if condition to flip the direction of the ball
   if (ballX < 10 || ballX > parseInt($container.css("width"))-5){
       flipX()
@@ -134,10 +113,20 @@ function moveBall(){
       document.location.reload();
     }
 
+  if (105 < ballX && ballX< 670) {
     if(275 < ballY && ballY < 450){
       helperX();
       helperY();
     }
+  }
+
+  // if(275 < ballY && ballY < 450){
+  //   if (105 < ballX && ballX< 670) {
+  //     console.log("DOOOOOOOOOO");
+  //     helperY();
+  //     }
+  //   }
+
   console.log("ball x = " + ballX + " y = " + ballY);
   currentPx = ballX + dx + "px";
   currentPy = ballY + dy + "px";
@@ -145,17 +134,6 @@ function moveBall(){
   $ball.css("top", currentPy);
 };
 
-// helperY();
-// helperX();
-// currentLocation = parseInt($ball.css("top"));
-// $ball.css("top", currentLocation ++);
-
 //levels---> Easy:10ms/ Med:5ms/ Hard: 1ms
 setInterval(moveBall, 10);
-
-
-
-
-
-
 });

@@ -13,57 +13,111 @@ body{
 
 }
 header{
+  margin-top: -30px;
+  text-align: center;
   position: absolute;
   display: inline-block;
   height: 100px;
   width: 98%;
 }
 .title{
-  padding-top: 50px;
+  font-size: 70px;
+  padding-top: 150px;
   color: white;
-text-align: center;
+  text-align: center;
 }
 h2{
+  margin-top: -40px;
+  font-size: 60px;
   color: white;
-text-align: center;}
-.ballimg{
-  height: 40px;
-  width: 40px;
+  text-align: center;
 }
 
 .logo{
-  display: inline-block;
-  height: 30px;
-  width: 100px;
+  align-items: center;
+  flex-direction: row;
+  float: left;
+  font-size: 30px;
+  display: flex;
+  height: 80px;
+  width: 170px;
   color:white;
 }
+.ballimg{
+
+  height: 60px;
+  width: 60px;
+}
+
 ul{
+  text-align: center;
   display: inline-block;
   height: 30px;
-  width: 500px;
+  width: 600px;
 }
 li{
+  font-size: 30px;
   display: inline-block;
   color: white;
 }
 .center{
   margin: auto;
   align-self: center;
-  height: 250px;
-  width: 250px;
+  height: 350px;
+  width: 350px;
 }
 .centerball{
+  margin: auto;
   border: dotted white 5px;
-  height: 290px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
   border-radius: 100%;
 }
 .start{
   height: 50px;
-  width: 300px;
+  width: 150px;
   opacity: .5;
   background-color: black;
   text-align: center;
   margin: auto;
   border-radius: 50px;
+}
+#first{
+  margin: 0 auto;
+  height: 300px;
+  width: 300px;
+  border: double white 5px;
+  border-radius: 50%;
+
+}
+#second{
+  margin: 0 auto;
+  height: 250px;
+  width: 250px;
+  border: double white 5px;
+  border-radius: 50%;
+}
+#third{
+  margin: 0 auto;
+  height: 200px;
+  width: 200px;
+  border: double white 5px;
+  border-radius: 50%;
+}
+#fourth{
+  margin: 0 auto;
+  height: 150px;
+  width: 150px;
+  border: double white 5px;
+  border-radius: 50%;
+}
+#fifth{
+  margin: 0 auto;
+  height: 100px;
+  width: 100px;
+  border: double white 5px;
+  border-radius: 50%;
+}
+.circles{
+  margin: auto;
 }

@@ -6,11 +6,17 @@ html {
   background-size: cover;
   background-color: black;
 }
+body{
+  display: flex;
+  flex-direction: row;
+  opacity: .85;
+
+}
 .container{
   background-color: lightblue;
   height: 700px;
   width: 800px;
-  border: black 2px solid;
+  border: black 5px solid;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,12 +51,18 @@ html {
   top: 100px;
 }
 .plate{
-  background-color: gray;
+  background-color: rgb(73, 73, 73);;
   height: 15px;
   width: 120px;
   left: 330px;
   position: absolute;
   align-self: flex-end;
   border-radius: 50px;
-
+}
+.info{
+  height: 700px;
+  width: 300px;
+  border: black 5px solid;
+  border-radius: 20px;
+  background-color: rgb(203, 255, 196);
 }

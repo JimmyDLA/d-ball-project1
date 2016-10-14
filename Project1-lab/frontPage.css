@@ -7,9 +7,19 @@ html {
   background-color: black;
 }
 body{
+
+  font-family: 'Nova Flat', cursive;
   display: block;
   height: 600px;
   width: 98%;
+}
+.playHolder{
+  height: 60px;
+  width: 98%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 }
 header{
@@ -50,13 +60,15 @@ h2{
 }
 
 ul{
+  padding-left: -40px;
   text-align: center;
   display: inline-block;
   height: 30px;
-  width: 600px;
+  width: 800px;
 }
 li{
-  font-size: 30px;
+  padding-left: 50px;
+  font-size: 25px;
   display: inline-block;
   color: white;
 }
@@ -73,51 +85,71 @@ li{
   width: 300px;
   border-radius: 100%;
 }
+p{
+  width: 150px;
+  height: 10px;
+  font-size: 30px;
+}
 .start{
   height: 50px;
   width: 150px;
   opacity: .5;
   background-color: black;
-  text-align: center;
-  margin: auto;
-  border-radius: 50px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container{
+  height: 350px;
+  width: 98%;
+  display: flex;
+  justify-content: center;
+
 }
 #first{
-  margin: 0 auto;
+  -webkit-animation: spin 10s infinite linear;
   height: 300px;
   width: 300px;
-  border: double white 5px;
+  border: dotted white 5px;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 }
 #second{
-  margin: 0 auto;
   height: 250px;
   width: 250px;
-  border: double white 5px;
+  border: dotted white 5px;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #third{
-  margin: 0 auto;
   height: 200px;
   width: 200px;
-  border: double white 5px;
+  border: dotted white 5px;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 #fourth{
-  margin: 0 auto;
   height: 150px;
   width: 150px;
-  border: double white 5px;
+  border: dotted white 5px;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 #fifth{
-  margin: 0 auto;
   height: 100px;
   width: 100px;
-  border: double white 5px;
+  border: dotted white 5px;
   border-radius: 50%;
-}
-.circles{
-  margin: auto;
 }

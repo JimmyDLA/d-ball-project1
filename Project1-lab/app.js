@@ -135,5 +135,5 @@ function moveBall(){
 };
 
 //levels---> Easy:10ms/ Med:5ms/ Hard: 1ms
-setInterval(moveBall, 10);
+setInterval(moveBall, 8);
 });

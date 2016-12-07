@@ -1,38 +1,113 @@
 document.addEventListener("DOMContentLoaded", function(){
 console.log("JS is running");
 
-var $ball = $(".ball");
-var $container = $(".container");
-var $plate = $(".plate");
-var bNum;
-var bHeight= parseInt($(".bricks").css("height"))
-var bWidth = parseInt($(".bricks").css("width"));
-var xDif = 110;
-var yDif = 277;
-var dx = 2;
-var dy = -2;
+let $ball = $(".ball");
+let $container = $(".container");
+let $plate = $(".plate");
+let bHeight= parseInt($(".bricks").css("height"))
+let bWidth = parseInt($(".bricks").css("width"));
+let xDif = 110;
+let yDif = 277;
+let dx = 2;
+let dy = -2;
+let bX2;
 function flipY(){
   dy= -dy;
 };
 function flipX(){
   dx= -dx;
 };
-var brickArr=[
-  ["b1",bX2 = (bWidth * 1) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 1) + yDif, bY1 = (bY2 - bHeight)],
-  ["b2",bX2 = (bWidth * 2) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 2) + yDif, bY1 = (bY2 - bHeight)],
-  ["b3",bX2 = (bWidth * 3) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 3) + yDif, bY1 = (bY2 - bHeight)],
-  ["b4",bX2 = (bWidth * 4) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 4) + yDif, bY1 = (bY2 - bHeight)],
-  ["b5",bX2 = (bWidth * 5) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 5) + yDif, bY1 = (bY2 - bHeight)],
-  ["b6",bX2 = (bWidth * 1) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 1) + yDif, bY1 = (bY2 - bHeight)],
-  ["b7",bX2 = (bWidth * 2) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 2) + yDif, bY1 = (bY2 - bHeight)],
-  ["b8",bX2 = (bWidth * 3) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 3) + yDif, bY1 = (bY2 - bHeight)],
-  ["b9",bX2 = (bWidth * 4) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 4) + yDif, bY1 = (bY2 - bHeight)],
-  ["b10",bX2 = (bWidth * 5) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 5) + yDif, bY1 = (bY2 - bHeight)],
-  ["b11",bX2 = (bWidth * 1) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 1) + yDif, bY1 = (bY2 - bHeight)],
-  ["b12",bX2 = (bWidth * 2) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 2) + yDif, bY1 = (bY2 - bHeight)],
-  ["b13",bX2 = (bWidth * 3) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 3) + yDif, bY1 = (bY2 - bHeight)],
-  ["b14",bX2 = (bWidth * 4) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 4) + yDif, bY1 = (bY2 - bHeight)],
-  ["b15",bX2 = (bWidth * 5) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 5) + yDif, bY1 = (bY2 - bHeight)],
+let brickArr=[
+  {
+    bX2 : (bWidth * 1) + xDif,
+    bX1 : (this.bX2 - bWidth),
+    bY2 : (bHeight * 1) + yDif,
+    bY1 : (this.bY2 - bHeight)
+  },
+  {
+    bX2 : (bWidth * 2) + xDif,
+    bX1 : (this.bX2 - bWidth),
+    bY2 : (bHeight * 2) + yDif,
+    bY1 : (this.bY2 - bHeight)
+  },
+  {
+    bX2 : (bWidth * 3) + xDif,
+    bX1 : (this.bX2 - bWidth),
+    bY2 : (bHeight * 3) + yDif,
+    bY1 : (this.bY2 - bHeight)
+  },
+  {
+    bX2 : (bWidth * 4) + xDif,
+    bX1 : (this.bX2 - bWidth),
+    bY2 : (bHeight * 4) + yDif,
+    bY1 : (this.bY2 - bHeight)
+  },
+{
+    bX2 : (bWidth * 5) + xDif,
+    bX1 : (this.bX2 - bWidth),
+    bY2 : (bHeight * 5) + yDif,
+    bY1 : (this.bY2 - bHeight)
+  },
+{
+    bX2 : (bWidth * 1) + xDif,
+    bX1 : (this.bX2 - bWidth),
+    bY2 : (bHeight * 1) + yDif,
+    bY1 : (this.bY2 - bHeight)
+  },
+{
+    bX2 : (bWidth * 2) + xDif,
+    bX1 : (this.bX2 - bWidth),
+    bY2 : (bHeight * 2) + yDif,
+    bY1 : (this.bY2 - bHeight)
+  },
+{
+    bX2 : (bWidth * 3) + xDif,
+    bX1 : (this.bX2 - bWidth),
+    bY2 : (bHeight * 3) + yDif,
+    bY1 : (this.bY2 - bHeight)
+  },
+{
+    bX2 : (bWidth * 4) + xDif,
+    bX1 : (this.bX2 - bWidth),
+    bY2 : (bHeight * 4) + yDif,
+    bY1 : (this.bY2 - bHeight)
+  },
+  {
+    bX2 : (bWidth * 5) + xDif,
+    bX1 : (this.bX2 - bWidth),
+    bY2 : (bHeight * 5) + yDif,
+    bY1 : (this.bY2 - bHeight)
+  },
+  {
+    bX2 : (bWidth * 1) + xDif,
+    bX1 : (this.bX2 - bWidth),
+    bY2 : (bHeight * 1) + yDif,
+    bY1 : (this.bY2 - bHeight)
+  },
+  {
+    bX2 : (bWidth * 2) + xDif,
+    bX1 : (this.bX2 - bWidth),
+    bY2 : (bHeight * 2) + yDif,
+    bY1 : (this.bY2 - bHeight)
+  },
+  {
+    bX2 : (bWidth * 3) + xDif,
+    bX1 : (this.bX2 - bWidth),
+    bY2 : (bHeight * 3) + yDif,
+    bY1 : (this.bY2 - bHeight)
+  },
+  {
+    bX2 : (bWidth * 4) + xDif,
+    bX1 : (this.bX2 - bWidth),
+    bY2 : (bHeight * 4) + yDif,
+    bY1 : (this.bY2 - bHeight)
+  },
+  {
+    bX2 : (bWidth * 5) + xDif,
+    bX1 : (this.bX2 - bWidth),
+    bY2 : (bHeight * 5) + yDif,
+    bY1 : (this.bY2 - bHeight)
+  }
 ];
 // // coordinates that will be adding or subtraction
 
@@ -40,7 +115,7 @@ var brickArr=[
 //event listeners for left and right keys
 $("body").on("keydown", pressing);
 function pressing(e){
-  var plateX = parseInt($plate.css("left"));
+  let plateX = parseInt($plate.css("left"));
   if (e.keyCode === 39 && plateX > 691){
     $plate.css("left", "690px");
     console.log("stop at " + $plate.css("left"));
@@ -62,35 +137,30 @@ function pressing(e){
 
 //this function will make the ball move every 8ms
 function moveBall(){
-  var ballY = parseInt($ball.css("top"));
-  var ballX = parseInt($ball.css("left"));
-  var plateX = parseInt($plate.css("left"));
+  let ballY = parseInt($ball.css("top"));
+  let ballX = parseInt($ball.css("left"));
+  let plateX = parseInt($plate.css("left"));
 
   function helperX(){
-    for (var i = 0; i < brickArr.length; i++) {
-      // console.log(brickArr[i]);
-      for (var n = 1; n < 5; n++) {
-        // console.log("helperX ==> "+ brickArr[i][n]);
-        if (ballX > brickArr[i][n] && ballX < brickArr[i][n]){
-          if(brickArr[i][n] < ballY && ballY < brickArr[i][n]){
+    for (let i = 0; i < brickArr.length; i++) {
+      console.log("helperX ");
+        //orig: (ballX===bx1)&&(ballY>bY1)&&(ballY<bY2)
+        if ((ballX === brickArr[i].bX1) || (ballX === brickArr[i].bX2)) {
+          if((ballY > brickArr[i].bY1) && (ballY < brickArr[i].bY2)){
             flipX();
-          }
         }
       }
     }
   };
 
   function helperY(){
-    for (var i = 0; i < brickArr.length; i++) {
-      // console.log(brickArr[i]);
-      for (var n = 1; n < 5; n++) {
-        // console.log("helperY => " + brickArr[i][n]);
-        if (ballY > brickArr[i][n] && ballY < brickArr[i][n]){
-          if(brickArr[i][n] < ballX && ballX < brickArr[i][n]){
+    for (let i = 0; i < brickArr.length; i++) {
+      console.log("helperY");
+        if ((ballY === brickArr[i].bX1) || (ballY === brickArr[i].bX2)) {
+          if((ballX >brickArr[i].bX1) && (ballX < brickArr[i].bX2)){
           flipY();
           }
         }
-      }
     }
   };
 
@@ -113,7 +183,7 @@ function moveBall(){
       document.location.reload();
     }
 
-  if (105 < ballX && ballX< 670) {
+  if (105 < ballX && ballX < 670) {
     if(275 < ballY && ballY < 450){
       helperX();
       helperY();
@@ -135,5 +205,5 @@ function moveBall(){
 };
 
 //levels---> Easy:10ms/ Med:5ms/ Hard: 1ms
-setInterval(moveBall, 8);
+setInterval(moveBall, 20);
 });

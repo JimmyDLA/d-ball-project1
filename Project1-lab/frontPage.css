@@ -11,11 +11,11 @@ body{
   font-family: 'Nova Flat', cursive;
   display: block;
   height: 600px;
-  width: 98%;
+  width: 100%;
 }
 .playHolder{
   height: 60px;
-  width: 98%;
+  width: 100vw;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -53,8 +53,7 @@ h2{
   width: 170px;
   color:white;
 }
-.ballimg{
-
+.balling{
   height: 60px;
   width: 60px;
 }
@@ -85,11 +84,15 @@ li{
   width: 300px;
   border-radius: 100%;
 }
-p{
-  width: 150px;
-  height: 10px;
-  font-size: 30px;
+
+.aTag{
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
 }
+
 .start{
   height: 50px;
   width: 150px;
@@ -102,13 +105,19 @@ p{
 }
 .container{
   height: 350px;
-  width: 98%;
+  width: 100%;
   display: flex;
   justify-content: center;
-
+}
+@keyframes rotateClockwise {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+@keyframes rotateCounterwise {
+    from {transform: rotate(360deg);}
+    to {transform: rotate(0deg);}
 }
 #first{
-  -webkit-animation: spin 10s infinite linear;
   height: 300px;
   width: 300px;
   border: dotted white 5px;
@@ -116,7 +125,7 @@ p{
   display: flex;
   justify-content: center;
   align-items: center;
-
+  animation: rotateClockwise 50s linear infinite;
 }
 #second{
   height: 250px;
@@ -126,6 +135,7 @@ p{
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: rotateCounterwise 25s linear infinite;
 }
 #third{
   height: 200px;
@@ -135,6 +145,7 @@ p{
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: rotateClockwise 15s linear infinite;
 
 }
 #fourth{
@@ -145,6 +156,7 @@ p{
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: rotateCounterwise 10s linear infinite;
 
 }
 #fifth{
@@ -152,4 +164,6 @@ p{
   width: 100px;
   border: dotted white 5px;
   border-radius: 50%;
+  animation: rotateClockwise 5s linear infinite;
+
 }

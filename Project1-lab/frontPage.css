@@ -164,6 +164,6 @@ li{
   width: 100px;
   border: dotted white 5px;
   border-radius: 50%;
-  animation: rotateClockwise 5s linear infinite;
+  animation: rotateClockwise 8s linear infinite;
 
 }

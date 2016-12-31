@@ -12,7 +12,23 @@ let xDif = 110;
 let yDif = 277;
 let dx = 1;
 let dy = -1;
-let bX2;
+
+let brickRow = 3;
+let brickColumn = 5;
+let brickWidth = 75;
+let brickHeight = 20;
+let brickPadding = 10;
+let brickOffsetTop = 30;
+let brickOffsetLeft = 30;
+
+let bricks = [];
+for (var c = 0; c < brickColumn; c++) {
+  bricks[c] = [];
+  for (var r = 0; r < brickRow; r++) {
+    bricks[c][r] = { x : 0 , y : 0 }
+  }
+}
+
 function flipY(){
   dy= -dy;
 };

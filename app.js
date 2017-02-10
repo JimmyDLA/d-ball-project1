@@ -7,11 +7,29 @@ let $plate = $(".plate");
 let bHeight= parseInt($(".bricks").css("height"))
 let bWidth = parseInt($(".bricks").css("width"));
 let box = $(".boxes");
-let brick10 = $("#10");
+// let brick11 = document.querySelector("#11");
 let xDif = 110;
 let yDif = 277;
 let dx = 1;
 let dy = -1;
+
+let brickArr=[
+  {},{},{},{},{},
+  {},{},{},{},{},
+  {},{},{},{},{}
+];
+
+let parent = $(".boxes");
+// let child = document.getElementById("p1");
+// parent.removeChild(child);
+
+for (let i = 0; i <= 14; i++) {
+  brickArr[i].id = $("#" + i)[0];
+  brickArr[i].bY1 = $("#" + i)[0].offsetTop-11;
+  brickArr[i].bY2 = brickArr[i].bY1 + 50;
+  brickArr[i].bX1 = $("#" + i)[0].offsetLeft-11;
+  brickArr[i].bX2 = brickArr[i].bX1 + 110;
+}
 
 let brickRow = 3;
 let brickColumn = 5;
@@ -21,13 +39,12 @@ let brickPadding = 10;
 let brickOffsetTop = 30;
 let brickOffsetLeft = 30;
 
-let bricks = [];
-for (var c = 0; c < brickColumn; c++) {
-  bricks[c] = [];
-  for (var r = 0; r < brickRow; r++) {
-    bricks[c][r] = { x : 0 , y : 0 }
-  }
-}
+// for (var c = 0; c < brickColumn; c++) {
+//   bricks[c] = [];
+//   for (var r = 0; r < brickRow; r++) {
+//     bricks[c][r] = { x : 0 , y : 0 }
+//   }
+// }
 
 function flipY(){
   dy= -dy;
@@ -36,179 +53,6 @@ function flipX(){
   dx= -dx;
 };
 
-
-let brickArr=[
-  {
-    // bX1 : (bWidth * 1) + xDif,
-    // bX2 : (this.bX1 - bWidth),
-    // bY1 : (bHeight * 1) + yDif,
-    // bY2 : (this.bY1 - bHeight)
-  },
-  {
-    // bX2 : (bWidth * 2) + xDif,
-    // bX1 : (this.bX2 - bWidth),
-    // bY2 : (bHeight * 2) + yDif,
-    // bY1 : (this.bY2 - bHeight)
-  },
-  {
-    // bX2 : (bWidth * 3) + xDif,
-    // bX1 : (this.bX2 - bWidth),
-    // bY2 : (bHeight * 3) + yDif,
-    // bY1 : (this.bY2 - bHeight)
-  },
-  {
-    // bX2 : (bWidth * 4) + xDif,
-    // bX1 : (this.bX2 - bWidth),
-    // bY2 : (bHeight * 4) + yDif,
-    // bY1 : (this.bY2 - bHeight)
-  },
-{
-    // bX2 : (bWidth * 5) + xDif,
-    // bX1 : (this.bX2 - bWidth),
-    // bY2 : (bHeight * 5) + yDif,
-    // bY1 : (this.bY2 - bHeight)
-  },
-{
-    // bX2 : (bWidth * 1) + xDif,
-    // bX1 : (this.bX2 - bWidth),
-    // bY2 : (bHeight * 1) + yDif,
-    // bY1 : (this.bY2 - bHeight)
-  },
-{
-    // bX2 : (bWidth * 2) + xDif,
-    // bX1 : (this.bX2 - bWidth),
-    // bY2 : (bHeight * 2) + yDif,
-    // bY1 : (this.bY2 - bHeight)
-  },
-{
-    // bX2 : (bWidth * 3) + xDif,
-    // bX1 : (this.bX2 - bWidth),
-    // bY2 : (bHeight * 3) + yDif,
-    // bY1 : (this.bY2 - bHeight)
-  },
-{
-    // bX2 : (bWidth * 4) + xDif,
-    // bX1 : (this.bX2 - bWidth),
-    // bY2 : (bHeight * 4) + yDif,
-    // bY1 : (this.bY2 - bHeight)
-  },
-  {brick10 : {}
-    // bX2 : (bWidth * 5) + xDif,
-    // bX1 : (this.bX2 - bWidth),
-    // bY2 : (bHeight * 5) + yDif,
-    // bY1 : (this.bY2 - bHeight)
-  },
-  {
-    // bX2 : (bWidth * 1) + xDif,
-    // bX1 : (this.bX2 - bWidth),
-    // bY2 : (bHeight * 1) + yDif,
-    // bY1 : (this.bY2 - bHeight)
-  },
-  {
-    // bX2 : (bWidth * 2) + xDif,
-    // bX1 : (this.bX2 - bWidth),
-    // bY2 : (bHeight * 2) + yDif,
-    // bY1 : (this.bY2 - bHeight)
-  },
-  {
-    // bX2 : (bWidth * 3) + xDif,
-    // bX1 : (this.bX2 - bWidth),
-    // bY2 : (bHeight * 3) + yDif,
-    // bY1 : (this.bY2 - bHeight)
-  },
-  {
-    // bX2 : (bWidth * 4) + xDif,
-    // bX1 : (this.bX2 - bWidth),
-    // bY2 : (bHeight * 4) + yDif,
-    // bY1 : (this.bY2 - bHeight)
-  },
-  {
-    // bX2 : (bWidth * 5) + xDif,
-    // bX1 : (this.bX2 - bWidth),
-    // bY2 : (bHeight * 5) + yDif,
-    // bY1 : (this.bY2 - bHeight)
-  }
-];
-
-
-brickArr[0].bX2 = (bWidth * 1) + xDif;
-brickArr[0].bX1 = (brickArr[0].bX2 - bWidth);
-brickArr[0].bY2 = (bHeight * 1) + yDif;
-brickArr[0].bY1 = (brickArr[0].bY2 - bHeight);
-
-brickArr[1].bX2 = (bWidth * 2) + xDif;
-brickArr[1].bX1 = (brickArr[1].bX2 - bWidth);
-brickArr[1].bY2 = (bHeight * 2) + yDif;
-brickArr[1].bY1 = (brickArr[1].bY2 - bHeight);
-
-brickArr[2].bX2 = (bWidth * 3) + xDif;
-brickArr[2].bX1 = (brickArr[2].bX2 - bWidth);
-brickArr[2].bY2 = (bHeight * 3) + yDif;
-brickArr[2].bY1 = (brickArr[2].bY2 - bHeight);
-
-brickArr[3].bX2 = (bWidth * 4) + xDif;
-brickArr[3].bX1 = (brickArr[3].bX2 - bWidth);
-brickArr[3].bY2 = (bHeight * 1) + yDif;
-brickArr[3].bY1 = (brickArr[3].bY2 - bHeight);
-
-brickArr[4].bX2 = (bWidth * 5) + xDif;
-brickArr[4].bX1 = (brickArr[4].bX2 - bWidth);
-brickArr[4].bY2 = (bHeight * 2) + yDif;
-brickArr[4].bY1 = (brickArr[4].bY2 - bHeight);
-
-brickArr[5].bX2 = (bWidth * 1) + xDif;
-brickArr[5].bX1 = (brickArr[5].bX2 - bWidth);
-brickArr[5].bY2 = (bHeight * 3) + yDif;
-brickArr[5].bY1 = (brickArr[5].bY2 - bHeight);
-
-brickArr[6].bX2 = (bWidth * 2) + xDif;
-brickArr[6].bX1 = (brickArr[6].bX2 - bWidth);
-brickArr[6].bY2 = (bHeight * 1) + yDif;
-brickArr[6].bY1 = (brickArr[6].bY2 - bHeight);
-
-brickArr[7].bX2 = (bWidth * 3) + xDif;
-brickArr[7].bX1 = (brickArr[7].bX2 - bWidth);
-brickArr[7].bY2 = (bHeight * 2) + yDif;
-brickArr[7].bY1 = (brickArr[7].bY2 - bHeight);
-
-brickArr[8].bX2 = (bWidth * 4) + xDif;
-brickArr[8].bX1 = (brickArr[8].bX2 - bWidth);
-brickArr[8].bY2 = (bHeight * 3) + yDif;
-brickArr[8].bY1 = (brickArr[8].bY2 - bHeight);
-
-brickArr[9].brick10.bX2 = (bWidth * 5) + xDif;
-brickArr[9].brick10.bX1 = (brickArr[9].brick10.bX2 - bWidth);
-brickArr[9].brick10.bY2 = (bHeight * 1) + yDif;
-brickArr[9].brick10.bY1 = (brickArr[9].bY2 - bHeight);
-
-brickArr[10].bX2 = (bWidth * 1) + xDif;
-brickArr[10].bX1 = (brickArr[10].bX2 - bWidth);
-brickArr[10].bY2 = (bHeight * 2) + yDif;
-brickArr[10].bY1 = (brickArr[10].bY2 - bHeight);
-
-brickArr[11].bX2 = (bWidth * 2) + xDif;
-brickArr[11].bX1 = (brickArr[11].bX2 - bWidth);
-brickArr[11].bY2 = (bHeight * 3) + yDif;
-brickArr[11].bY1 = (brickArr[11].bY2 - bHeight);
-
-brickArr[12].bX2 = (bWidth * 3) + xDif;
-brickArr[12].bX1 = (brickArr[12].bX2 - bWidth);
-brickArr[12].bY2 = (bHeight * 1) + yDif;
-brickArr[12].bY1 = (brickArr[12].bY2 - bHeight);
-
-brickArr[13].bX2 = (bWidth * 4) + xDif;
-brickArr[13].bX1 = (brickArr[13].bX2 - bWidth);
-brickArr[13].bY2 = (bHeight * 2) + yDif;
-brickArr[13].bY1 = (brickArr[13].bY2 - bHeight);
-
-brickArr[14].bX2 = (bWidth * 5) + xDif;
-brickArr[14].bX1 = (brickArr[14].bX2 - bWidth);
-brickArr[14].bY2 = (bHeight * 3) + yDif;
-brickArr[14].bY1 = (brickArr[14].bY2 - bHeight);
-
-
-
-// // coordinates that will be adding or subtraction
 
 
 //event listeners for left and right keys
@@ -248,7 +92,10 @@ function moveBall(){
         if((ballY > brickArr[i].bY1) && (ballY < brickArr[i].bY2)){
           console.log("flipX", brickArr[i]);
           console.log("ball x = " + ballX + " y = " + ballY);
-          // debugger
+          // debugger;
+          brickArr[i].id.style.opacity ="0";
+          brickArr.splice(i,1);
+          console.log(brickArr[0]);
           flipX();
         }
       }
@@ -262,7 +109,10 @@ function moveBall(){
         if((ballX > brickArr[i].bX1) && (ballX < brickArr[i].bX2)){
           console.log("flipY", brickArr[i]);
           console.log("ball x = " + ballX + " y = " + ballY);
-          // debugger
+          // debugger;
+          brickArr[i].id.style.opacity ="0";
+          brickArr.splice(i,1);
+          console.log(brickArr[0]);
           flipY();
         }
       }
@@ -293,6 +143,11 @@ function moveBall(){
       helperX();
       helperY();
     }
+  }
+
+  if(brickArr[0] === undefined){
+    alert("YOU WON!");
+    docuent.location.reload();
   }
 
 

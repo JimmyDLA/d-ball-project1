@@ -21,25 +21,23 @@ body{
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-
 }
 .boxes{
   height:150px;
   width: 600px;
-  /*background-color: yellow;*/
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
 }
 .bricks{
-
   height: 48px;
   width: 110px;
   background-color: darkblue;
   border: dotted white 1px;
   border-radius: 10px;
 }
+
 .ball{
   background-color: blue;
   height: 15px;

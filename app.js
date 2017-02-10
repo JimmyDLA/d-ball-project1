@@ -1,34 +1,51 @@
 document.addEventListener("DOMContentLoaded", function(){
 console.log("JS is running");
 
-var $ball = $(".ball");
-var $container = $(".container");
-var $plate = $(".plate");
-var bNum;
-var bHeight= parseInt($(".bricks").css("height"))
-var bWidth = parseInt($(".bricks").css("width"));
-var xDif = 110;
-var yDif = 277;
-var brickArr=[
-  ["b1",bX2 = (bWidth * 1) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 1) + yDif, bY1 = (bY2 - bHeight)],
-  ["b2",bX2 = (bWidth * 2) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 2) + yDif, bY1 = (bY2 - bHeight)],
-  ["b3",bX2 = (bWidth * 3) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 3) + yDif, bY1 = (bY2 - bHeight)],
-  ["b4",bX2 = (bWidth * 4) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 4) + yDif, bY1 = (bY2 - bHeight)],
-  ["b5",bX2 = (bWidth * 5) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 5) + yDif, bY1 = (bY2 - bHeight)],
-  ["b6",bX2 = (bWidth * 1) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 1) + yDif, bY1 = (bY2 - bHeight)],
-  ["b7",bX2 = (bWidth * 2) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 2) + yDif, bY1 = (bY2 - bHeight)],
-  ["b8",bX2 = (bWidth * 3) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 3) + yDif, bY1 = (bY2 - bHeight)],
-  ["b9",bX2 = (bWidth * 4) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 4) + yDif, bY1 = (bY2 - bHeight)],
-  ["b10",bX2 = (bWidth * 5) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 5) + yDif, bY1 = (bY2 - bHeight)],
-  ["b11",bX2 = (bWidth * 1) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 1) + yDif, bY1 = (bY2 - bHeight)],
-  ["b12",bX2 = (bWidth * 2) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 2) + yDif, bY1 = (bY2 - bHeight)],
-  ["b13",bX2 = (bWidth * 3) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 3) + yDif, bY1 = (bY2 - bHeight)],
-  ["b14",bX2 = (bWidth * 4) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 4) + yDif, bY1 = (bY2 - bHeight)],
-  ["b15",bX2 = (bWidth * 5) + xDif, bX1 = (bX2 - bWidth), bY2 = (bHeight * 5) + yDif, bY1 = (bY2 - bHeight)],
+let $ball = $(".ball");
+let $container = $(".container");
+let $plate = $(".plate");
+let bHeight= parseInt($(".bricks").css("height"))
+let bWidth = parseInt($(".bricks").css("width"));
+let box = $(".boxes");
+// let brick11 = document.querySelector("#11");
+let xDif = 110;
+let yDif = 277;
+let dx = 1;
+let dy = -1;
+
+let brickArr=[
+  {},{},{},{},{},
+  {},{},{},{},{},
+  {},{},{},{},{}
 ];
-// coordinates that will be adding or subtraction
-var dx = 2;
-var dy = -2;
+
+let parent = $(".boxes");
+// let child = document.getElementById("p1");
+// parent.removeChild(child);
+
+for (let i = 0; i <= 14; i++) {
+  brickArr[i].id = $("#" + i)[0];
+  brickArr[i].bY1 = $("#" + i)[0].offsetTop-11;
+  brickArr[i].bY2 = brickArr[i].bY1 + 50;
+  brickArr[i].bX1 = $("#" + i)[0].offsetLeft-11;
+  brickArr[i].bX2 = brickArr[i].bX1 + 110;
+}
+
+let brickRow = 3;
+let brickColumn = 5;
+let brickWidth = 75;
+let brickHeight = 20;
+let brickPadding = 10;
+let brickOffsetTop = 30;
+let brickOffsetLeft = 30;
+
+// for (var c = 0; c < brickColumn; c++) {
+//   bricks[c] = [];
+//   for (var r = 0; r < brickRow; r++) {
+//     bricks[c][r] = { x : 0 , y : 0 }
+//   }
+// }
+
 function flipY(){
   dy= -dy;
 };
@@ -36,60 +53,12 @@ function flipX(){
   dx= -dx;
 };
 
-function helperX(){
-  for (var i = 0; i < brickArr.length; i++) {
-    // console.log(brickArr[i]);
-    for (var n = 0; n < 5; n++) {
-      // console.log(brickArr[i][n]);
-      if (ballX = brickArr[i][n] || brickArr[i][n] && brickArr[i][n] < ballY < brickArr[i][n]){
-        // flipX();
-        flipY();
-      }
-    }
-  }
-}
-
-function helperY(){
-  for (var i = 0; i < brickArr.length; i++) {
-    // console.log(brickArr[i]);
-    for (var n = 0; n < 5; n++) {
-      // console.log(brickArr[i][n]);
-      if(ballY = brickArr[i][n] || brickArr[i][n] && brickArr[i][n] < ballX < brickArr[i][n]){
-        // flipY();
-        flipX();
-      }
-    }
-  }
-}
-
-// my for loop to make the bricks w/ jQuery
-// for (var i = 1; i <= 15; i++) {
-//  var $newDiv = $("<div class = bricks id =" +i+ ">" +i+ "</div>");
-//  $(".boxes").append($newDiv);
-//  }
- // for (var n = 0; n < 15; n ++){
- //   brickArr[n]= {
- //     bNum: parseInt($("#"+(1+n)).text()),
- //     bX2: bWidth * bNum,
- //     bX1: bX2 - bWidth,
- //     bY2: bHeight * bNum,
- //     bY1: bY2 - bHeight,
- //
- //   }
- // }
- // brickArr.push($("#"+i))
- // console.log($("#"+ i));
- // console.log(brickArr[3][3])
- // console.log("bx2 is "+bX2)
- // console.log("bX1 is "+ bX1)
- // console.log("bY2 is "+bY2)
- // console.log("bY1 is "+bY1)
 
 
 //event listeners for left and right keys
 $("body").on("keydown", pressing);
 function pressing(e){
-  var plateX = parseInt($plate.css("left"));
+  let plateX = parseInt($plate.css("left"));
   if (e.keyCode === 39 && plateX > 691){
     $plate.css("left", "690px");
     console.log("stop at " + $plate.css("left"));
@@ -111,9 +80,44 @@ function pressing(e){
 
 //this function will make the ball move every 8ms
 function moveBall(){
-  var ballY = parseInt($ball.css("top"));
-  var ballX = parseInt($ball.css("left"));
-  var plateX = parseInt($plate.css("left"));
+  let ballY = parseInt($ball.css("top"));
+  let ballX = parseInt($ball.css("left"));
+  let plateX = parseInt($plate.css("left"));
+
+  function helperX(){
+    for (let i = 0; i < brickArr.length; i++) {
+      // console.log("helperX...bX1==>",brickArr[i]);
+      // debugger;
+      if ((ballX === brickArr[i].bX1) || (ballX === brickArr[i].bX2)) {
+        if((ballY > brickArr[i].bY1) && (ballY < brickArr[i].bY2)){
+          console.log("flipX", brickArr[i]);
+          console.log("ball x = " + ballX + " y = " + ballY);
+          // debugger;
+          brickArr[i].id.style.opacity ="0";
+          brickArr.splice(i,1);
+          console.log(brickArr[0]);
+          flipX();
+        }
+      }
+    }
+  };
+
+  function helperY(){
+    for (let i = 0; i < brickArr.length; i++) {
+      // console.log("helperY");
+      if ((ballY === brickArr[i].bY1) || (ballY === brickArr[i].bY2)) {
+        if((ballX > brickArr[i].bX1) && (ballX < brickArr[i].bX2)){
+          console.log("flipY", brickArr[i]);
+          console.log("ball x = " + ballX + " y = " + ballY);
+          // debugger;
+          brickArr[i].id.style.opacity ="0";
+          brickArr.splice(i,1);
+          console.log(brickArr[0]);
+          flipY();
+        }
+      }
+    }
+  };
 
   //if condition to flip the direction of the ball
   if (ballX < 10 || ballX > parseInt($container.css("width"))-5){
@@ -134,28 +138,26 @@ function moveBall(){
       document.location.reload();
     }
 
+  if (105 < ballX && ballX < 670) {
     if(275 < ballY && ballY < 450){
       helperX();
       helperY();
     }
-  console.log("ball x = " + ballX + " y = " + ballY);
+  }
+
+  if(brickArr[0] === undefined){
+    alert("YOU WON!");
+    docuent.location.reload();
+  }
+
+
+  // console.log("ball x = " + ballX + " y = " + ballY);
   currentPx = ballX + dx + "px";
   currentPy = ballY + dy + "px";
   $ball.css("left", currentPx );
   $ball.css("top", currentPy);
 };
 
-// helperY();
-// helperX();
-// currentLocation = parseInt($ball.css("top"));
-// $ball.css("top", currentLocation ++);
-
 //levels---> Easy:10ms/ Med:5ms/ Hard: 1ms
-setInterval(moveBall, 10);
-
-
-
-
-
-
+setInterval(moveBall, 5);
 });

@@ -147,7 +147,7 @@ function moveBall(){
 
   if(brickArr[0] === undefined){
     alert("YOU WON!");
-    docuent.location.reload();
+    document.location.reload();
   }
 
 

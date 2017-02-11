@@ -6,23 +6,19 @@ let $container = $(".container");
 let $plate = $(".plate");
 let bHeight= parseInt($(".bricks").css("height"))
 let bWidth = parseInt($(".bricks").css("width"));
-let box = $(".boxes");
-// let brick11 = document.querySelector("#11");
 let xDif = 110;
 let yDif = 277;
 let dx = 1;
 let dy = -1;
 
+//WHERE ALL BRICKS COORDINATES WILL LIVE
 let brickArr=[
   {},{},{},{},{},
   {},{},{},{},{},
   {},{},{},{},{}
 ];
 
-let parent = $(".boxes");
-// let child = document.getElementById("p1");
-// parent.removeChild(child);
-
+//FOR LOOP TO CREATE EACH BRICK'S INFO AND COORDINATES
 for (let i = 0; i <= 14; i++) {
   brickArr[i].id = $("#" + i)[0];
   brickArr[i].bY1 = $("#" + i)[0].offsetTop-11;
@@ -31,21 +27,7 @@ for (let i = 0; i <= 14; i++) {
   brickArr[i].bX2 = brickArr[i].bX1 + 110;
 }
 
-let brickRow = 3;
-let brickColumn = 5;
-let brickWidth = 75;
-let brickHeight = 20;
-let brickPadding = 10;
-let brickOffsetTop = 30;
-let brickOffsetLeft = 30;
-
-// for (var c = 0; c < brickColumn; c++) {
-//   bricks[c] = [];
-//   for (var r = 0; r < brickRow; r++) {
-//     bricks[c][r] = { x : 0 , y : 0 }
-//   }
-// }
-
+// HELPER FUNCTIONS TO FLIP BALL DIRECTION
 function flipY(){
   dy= -dy;
 };
@@ -78,60 +60,57 @@ function pressing(e){
   }
 }
 
-//this function will make the ball move every 8ms
+//this function will make the ball move
 function moveBall(){
   let ballY = parseInt($ball.css("top"));
   let ballX = parseInt($ball.css("left"));
   let plateX = parseInt($plate.css("left"));
 
+  // THIS FUNCITON FLIPS THE X-AXIS OF THE BALL AND TARGETS THE BRICK IT HITS
   function helperX(){
     for (let i = 0; i < brickArr.length; i++) {
-      // console.log("helperX...bX1==>",brickArr[i]);
-      // debugger;
       if ((ballX === brickArr[i].bX1) || (ballX === brickArr[i].bX2)) {
         if((ballY > brickArr[i].bY1) && (ballY < brickArr[i].bY2)){
-          console.log("flipX", brickArr[i]);
-          console.log("ball x = " + ballX + " y = " + ballY);
-          // debugger;
           brickArr[i].id.style.opacity ="0";
           brickArr.splice(i,1);
-          console.log(brickArr[0]);
           flipX();
         }
       }
     }
   };
 
+  // THIS FUNCITON FLIPS THE Y-AXIS OF THE BALL AND TARGETS THE BRICK IT HITS
   function helperY(){
     for (let i = 0; i < brickArr.length; i++) {
-      // console.log("helperY");
       if ((ballY === brickArr[i].bY1) || (ballY === brickArr[i].bY2)) {
         if((ballX > brickArr[i].bX1) && (ballX < brickArr[i].bX2)){
-          console.log("flipY", brickArr[i]);
-          console.log("ball x = " + ballX + " y = " + ballY);
-          // debugger;
           brickArr[i].id.style.opacity ="0";
           brickArr.splice(i,1);
-          console.log(brickArr[0]);
           flipY();
         }
       }
     }
   };
 
-  //if condition to flip the direction of the ball
+  //if condition to flip the direction of the ball when it hits the side walls
   if (ballX < 10 || ballX > parseInt($container.css("width"))-5){
-      flipX()
+    flipX()
   }
+
+  //if condition to flip the direction of the ball when it hits the side walls
   if (ballY < 10){
-      flipY()
+    flipY()
   }
+
+  //if condition to flip the direction of the ball when it hits the paddle
   if(ballY > parseInt($container.css("height"))- 25){
-      if((ballX > plateX) && (ballX < plateX + 120) ){
-        console.log(ballX, plateX);
-        flipY()
-        }
-      }
+    if((ballX > plateX) && (ballX < plateX + 120) ){
+      console.log(ballX, plateX);
+      flipY()
+    }
+  }
+
+  // if condition to let you know you gameover
   if(ballY > parseInt($container.css("height"))-10){
       console.log("plate x = " +plateX);
       alert("GAME OVER!");
@@ -145,13 +124,13 @@ function moveBall(){
     }
   }
 
+  //if condition to let you know you won after all bricks are done
   if(brickArr[0] === undefined){
     alert("YOU WON!");
-    docuent.location.reload();
+    document.location.reload();
   }
 
 
-  // console.log("ball x = " + ballX + " y = " + ballY);
   currentPx = ballX + dx + "px";
   currentPy = ballY + dy + "px";
   $ball.css("left", currentPx );

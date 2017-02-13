@@ -55,11 +55,11 @@ body{
   width: 120px;
   left: 330px;
   position: absolute;
-  align-self: flex-end;
+  bottom: 15%;
   border-radius: 50px;
 }
 .info{
-  height: 700px;
+  height: 300px;
   width: 300px;
   border: black 5px solid;
   border-radius: 20px;

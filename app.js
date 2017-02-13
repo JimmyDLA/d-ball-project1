@@ -6,10 +6,13 @@ let $container = $(".container");
 let $plate = $(".plate");
 let bHeight= parseInt($(".bricks").css("height"))
 let bWidth = parseInt($(".bricks").css("width"));
+let totalBrick = $("#totalBrick")[0];
+let totalScore = $("#totalScore")[0];
 let xDif = 110;
 let yDif = 277;
 let dx = 1;
 let dy = -1;
+
 
 //WHERE ALL BRICKS COORDINATES WILL LIVE
 let brickArr=[
@@ -17,10 +20,13 @@ let brickArr=[
   {},{},{},{},{},
   {},{},{},{},{}
 ];
+console.log(totalScore, totalBrick, brickArr.length);
 
+totalBrick.innerHTML = brickArr.length;
+totalScore.innerHTML = 0;
 
 //FOR LOOP TO CREATE EACH BRICK'S INFO AND COORDINATES
-for (let i = 0; i <= 14; i++) {
+for (let i = 0; i < brickArr.length; i++) {
   brickArr[i].id = $("#" + i)[0];
   brickArr[i].bY1 = $("#" + i)[0].offsetTop-11;
   brickArr[i].bY2 = brickArr[i].bY1 + 50;
@@ -35,7 +41,6 @@ function flipY(){
 function flipX(){
   dx= -dx;
 };
-
 
 
 //event listeners for left and right keys
@@ -61,6 +66,7 @@ function pressing(e){
   }
 }
 
+let score = 0;
 //this function will make the ball move
 function moveBall(){
   let ballY = parseInt($ball.css("top"));
@@ -74,6 +80,9 @@ function moveBall(){
         if((ballY > brickArr[i].bY1) && (ballY < brickArr[i].bY2)){
           brickArr[i].id.style.opacity ="0";
           brickArr.splice(i,1);
+          score = score + 150;
+          totalBrick.innerHTML = brickArr.length;
+          totalScore.innerHTML = score;
           flipX();
         }
       }
@@ -87,6 +96,9 @@ function moveBall(){
         if((ballX > brickArr[i].bX1) && (ballX < brickArr[i].bX2)){
           brickArr[i].id.style.opacity ="0";
           brickArr.splice(i,1);
+          score = score + 150;
+          totalBrick.innerHTML = brickArr.length;
+          totalScore.innerHTML = score;
           flipY();
         }
       }

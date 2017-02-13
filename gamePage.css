@@ -9,6 +9,7 @@ html {
 body{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   opacity: .85;
 
 }
@@ -54,13 +55,14 @@ body{
   width: 120px;
   left: 330px;
   position: absolute;
-  align-self: flex-end;
+  bottom: 15%;
   border-radius: 50px;
 }
 .info{
-  height: 700px;
+  height: 300px;
   width: 300px;
   border: black 5px solid;
   border-radius: 20px;
   background-color: rgb(203, 255, 196);
+  text-align: center;
 }

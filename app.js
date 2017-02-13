@@ -19,10 +19,6 @@ let brickArr=[
   {},{},{},{},{}
 ];
 
-let parent = $(".boxes");
-// let child = document.getElementById("p1");
-// parent.removeChild(child);
-
 for (let i = 0; i <= 14; i++) {
   brickArr[i].id = $("#" + i)[0];
   brickArr[i].bY1 = $("#" + i)[0].offsetTop-11;

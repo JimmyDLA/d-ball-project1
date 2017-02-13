@@ -9,6 +9,7 @@ html {
 body{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   opacity: .85;
 
 }
@@ -63,4 +64,5 @@ body{
   border: black 5px solid;
   border-radius: 20px;
   background-color: rgb(203, 255, 196);
+  text-align: center;
 }

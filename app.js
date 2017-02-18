@@ -45,24 +45,16 @@ function flipX(){
 
 //event listeners for left and right keys
 $("body").on("keydown", pressing);
+$("body").on("keyup", pressing);
+$("body").on("mousemove", pressing);
+
 function pressing(e){
   let plateX = parseInt($plate.css("left"));
-  if (e.keyCode === 39 && plateX > 691){
-    $plate.css("left", "690px");
-    console.log("stop at " + $plate.css("left"));
-  }
-  if (e.keyCode === 37 && plateX < 11){
-      $plate.css("left", "10px");
-  }
-  if (e.keyCode === 37 && plateX > 11){
-    lefty = plateX - 40 + "px";
-    $plate.css("left", lefty)
-    console.log("left = "+ lefty);
-  }
-  if (e.keyCode === 39 && plateX < 690){
-    righty = plateX + 40 + "px";
-    $plate.css("left", righty);
-    console.log("right = " + righty);
+  let mouseX = e.clientX;
+
+  if (mouseX > 11 && mouseX < 691){
+    lefty = mouseX + "px";
+    $plate.css("left", lefty);
   }
 }
 

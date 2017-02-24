@@ -69,10 +69,7 @@ function moveBall(){
       if ((ballX === brickArr[i].bX1) || (ballX === brickArr[i].bX2)) {
         if((ballY > brickArr[i].bY1) && (ballY < brickArr[i].bY2)){
           brickArr[i].id.style.opacity ="0";
-          brickArr.[i].bX1= 0;
-          brickArr.[i].bX2= 0;
-          brickArr.[i].bY1= 0;
-          brickArr.[i].bY1= 0;
+          brickArr.splice(i,1);
           score = score + 150;
           totalBrick.innerHTML = brickArr.length;
           totalScore.innerHTML = score;
@@ -91,10 +88,7 @@ function moveBall(){
       if ((ballY === brickArr[i].bY1) || (ballY === brickArr[i].bY2)) {
         if((ballX > brickArr[i].bX1) && (ballX < brickArr[i].bX2)){
           brickArr[i].id.style.opacity ="0";
-          brickArr.[i].bX1= 0;
-          brickArr.[i].bX2= 0;
-          brickArr.[i].bY1= 0;
-          brickArr.[i].bY1= 0;
+          brickArr.splice(i,1);
           score = score + 150;
           totalBrick.innerHTML = brickArr.length;
           totalScore.innerHTML = score;
@@ -117,9 +111,9 @@ function moveBall(){
   }
 
   //if condition to flip the direction of the ball when it hits the paddle
-  if(ballY > parseInt($container.css("height"))- 30){
+  if(ballY > parseInt($container.css("height"))- 25){
     if((ballX > plateX) && (ballX < plateX + 120) ){
-      console.log(ballX, plateX);
+      console.log(ballX, plateX), ballY;
       flipY()
     }
   }
@@ -149,6 +143,7 @@ function moveBall(){
   currentPy = ballY + dy + "px";
   $ball.css("left", currentPx );
   $ball.css("top", currentPy);
+  // console.log("ballX=", currentPx, "ballY=", currentPy );
 };
 
 //levels---> Easy:10ms/ Med:5ms/ Hard: 1ms

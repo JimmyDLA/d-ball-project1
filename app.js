@@ -8,8 +8,6 @@ let bHeight= parseInt($(".bricks").css("height"))
 let bWidth = parseInt($(".bricks").css("width"));
 let totalBrick = $("#totalBrick")[0];
 let totalScore = $("#totalScore")[0];
-let xDif = 110;
-let yDif = 277;
 let dx = 1;
 let dy = -1;
 
@@ -28,9 +26,9 @@ totalScore.innerHTML = 0;
 //FOR LOOP TO CREATE EACH BRICK'S INFO AND COORDINATES
 for (let i = 0; i < brickArr.length; i++) {
   brickArr[i].id = $("#" + i)[0];
-  brickArr[i].bY1 = $("#" + i)[0].offsetTop-11;
+  brickArr[i].bY1 = $("#" + i)[0].offsetTop;
   brickArr[i].bY2 = brickArr[i].bY1 + 50;
-  brickArr[i].bX1 = $("#" + i)[0].offsetLeft-11;
+  brickArr[i].bX1 = $("#" + i)[0].offsetLeft;
   brickArr[i].bX2 = brickArr[i].bX1 + 110;
 }
 
@@ -52,7 +50,7 @@ function pressing(e){
   let plateX = parseInt($plate.css("left"));
   let mouseX = e.clientX;
 
-  if (mouseX > 11 && mouseX < 691){
+  if (mouseX > 0 && mouseX < 681){
     lefty = mouseX + "px";
     $plate.css("left", lefty);
   }
@@ -75,6 +73,9 @@ function moveBall(){
           score = score + 150;
           totalBrick.innerHTML = brickArr.length;
           totalScore.innerHTML = score;
+          console.log(brickArr);
+          console.log("ballx= ", ballX, "ballY= ", ballY);
+          console.log("flipX");
           flipX();
         }
       }
@@ -91,6 +92,8 @@ function moveBall(){
           score = score + 150;
           totalBrick.innerHTML = brickArr.length;
           totalScore.innerHTML = score;
+          console.log(brickArr);
+          console.log("flipY");
           flipY();
         }
       }
@@ -98,7 +101,7 @@ function moveBall(){
   };
 
   //if condition to flip the direction of the ball when it hits the side walls
-  if (ballX < 10 || ballX > parseInt($container.css("width"))-5){
+  if (ballX < 2 || ballX > parseInt($container.css("width"))-15){
     flipX()
   }
 
@@ -110,13 +113,13 @@ function moveBall(){
   //if condition to flip the direction of the ball when it hits the paddle
   if(ballY > parseInt($container.css("height"))- 25){
     if((ballX > plateX) && (ballX < plateX + 120) ){
-      console.log(ballX, plateX);
+      console.log(ballX, plateX), ballY;
       flipY()
     }
   }
 
   // if condition to let you know you gameover
-  if(ballY > parseInt($container.css("height"))-10){
+  if(ballY > parseInt($container.css("height"))-20){
       console.log("plate x = " +plateX);
       alert("GAME OVER!");
       document.location.reload();
@@ -140,6 +143,7 @@ function moveBall(){
   currentPy = ballY + dy + "px";
   $ball.css("left", currentPx );
   $ball.css("top", currentPy);
+  // console.log("ballX=", currentPx, "ballY=", currentPy );
 };
 
 //levels---> Easy:10ms/ Med:5ms/ Hard: 1ms
